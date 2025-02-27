@@ -2,6 +2,9 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 
 function Organization() {
+  if (localStorage.getItem("token") === null) {
+    window.location.href = "/company-login";
+  }
   return (
     <div className="flex min-h-screen bg-gray-100">
       <Sidebar />

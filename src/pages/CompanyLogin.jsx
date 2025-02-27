@@ -1,44 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import logosrc from "../assets/logo.png";
+import axios from "axios";
 import beesrc from "../assets/beehive.jpg";
-
+import configure from "../Config/configuration.js";
+import { toast, Toaster } from "react-hot-toast";
 const CompanyLogin = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
     rememberMe: false,
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError("");
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      if (!formData.email.includes('@')) {
-        throw new Error('Please enter a valid email address');
+      if (!formData.email.includes("@")) {
+        throw new Error("Please enter a valid email address");
       }
-      
+
       if (formData.password.length < 6) {
-        throw new Error('Password must be at least 6 characters');
+        throw new Error("Password must be at least 6 characters");
       }
-      
-      console.log('Login successful', formData);
-      
+      const response = await axios.post(
+        `http://localhost:8000/user/login`,
+        formData
+      );
+      console.log(response);
+      localStorage.setItem("token", response.data.data.user._id);
+
+      toast.success("user logged in ");
+      console.log("Login successful", formData);
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      window.location.href = "/home";
     } catch (err) {
-      setError(err.message || 'Login failed. Please try again.');
+      toast.error(err.message);
+      setError(err || "Login failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -46,8 +56,9 @@ const CompanyLogin = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-900 bg-opacity-95 text-white">
+      <Toaster />
       <div className="w-[70%] h-[70%] mr-[5%]">
-        <img src={beesrc} alt="beehive"/>
+        <img src={beesrc} alt="beehive" />
       </div>
       <div className="max-w-md w-full p-8 mr-[5%]">
         <div className="flex justify-center mb-8">
@@ -55,16 +66,19 @@ const CompanyLogin = () => {
             <img src={logosrc} alt="Logo" />
           </div>
         </div>
-        
+
         {error && (
           <div className="mb-4 p-3 bg-red-900 bg-opacity-50 text-red-200 rounded-md">
             {error}
           </div>
         )}
-        
+
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-300 ml-5 font-medium mb-2">
+            <label
+              htmlFor="email"
+              className="block text-gray-300 ml-5 font-medium mb-2"
+            >
               Organization Email
             </label>
             <input
@@ -78,9 +92,12 @@ const CompanyLogin = () => {
               required
             />
           </div>
-          
+
           <div className="mb-6">
-            <label htmlFor="password" className="block text-gray-300 ml-5 font-medium mb-2">
+            <label
+              htmlFor="password"
+              className="block text-gray-300 ml-5 font-medium mb-2"
+            >
               Password
             </label>
             <input
@@ -94,7 +111,7 @@ const CompanyLogin = () => {
               required
             />
           </div>
-          
+
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
               <input
@@ -109,24 +126,30 @@ const CompanyLogin = () => {
                 Remember me
               </label>
             </div>
-            <a href="#" className="text-yellow-500 hover:text-yellow-400 text-sm">
+            <a
+              href="#"
+              className="text-yellow-500 hover:text-yellow-400 text-sm"
+            >
               Forgot password?
             </a>
           </div>
-          
+
           <button
             type="submit"
             disabled={loading}
             className="w-full bg-yellow-500 text-black font-medium py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-slate-900 transition-colors duration-300"
           >
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
-        
+
         <div className="mt-6 text-center">
           <p className="text-gray-400">
-            Need an account?{' '}
-            <a href="#" className="text-yellow-500 hover:cursor:pointer hover:text-yellow-400">
+            Need an account?{" "}
+            <a
+              href="/company-signup"
+              className="text-yellow-500 hover:cursor:pointer hover:text-yellow-400"
+            >
               Sign up
             </a>
           </p>

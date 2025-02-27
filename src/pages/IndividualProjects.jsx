@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
 export default function IndividualProjects() {
+  if (localStorage.getItem("token") === null) {
+    window.location.href = "/company-login";
+  }
   const [progress, setProgress] = useState(50);
 
   return (
@@ -20,8 +23,10 @@ export default function IndividualProjects() {
 
         {/* Progress Bar */}
         <div className="w-full bg-gray-700 h-3 rounded-full overflow-hidden mb-6">
-        <div className="bg-yellow-400 h-3" style={{ width: `${progress}%` }}></div>
-
+          <div
+            className="bg-yellow-400 h-3"
+            style={{ width: `${progress}%` }}
+          ></div>
         </div>
 
         {/* Team Lead */}
@@ -31,14 +36,24 @@ export default function IndividualProjects() {
         </div>
 
         {/* Team Description */}
-        <h2 className="text-2xl text-center text-yellow-400 mb-4">Description of Team</h2>
+        <h2 className="text-2xl text-center text-yellow-400 mb-4">
+          Description of Team
+        </h2>
 
         {/* Team Members */}
         <div className="grid grid-cols-2 gap-4">
           {[1, 2, 3, 4].map((num) => (
             <div key={num} className="bg-gray-800 p-4 rounded-lg text-center">
               <strong>Member {num}</strong>
-              <p>{num === 1 ? "Frontend Dev" : num === 2 ? "Creator" : num === 3 ? "Designer" : "Backend"}</p>
+              <p>
+                {num === 1
+                  ? "Frontend Dev"
+                  : num === 2
+                  ? "Creator"
+                  : num === 3
+                  ? "Designer"
+                  : "Backend"}
+              </p>
             </div>
           ))}
         </div>
