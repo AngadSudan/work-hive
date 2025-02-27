@@ -48,7 +48,7 @@ const CompanyLogin = () => {
       window.location.href = "/home";
     } catch (err) {
       toast.error(err.message);
-      setError(err || "Login failed. Please try again.");
+      setError(err.message || "Login failed. Please try again.");
     } finally {
       setLoading(false);
     }

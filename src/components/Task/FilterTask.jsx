@@ -272,13 +272,22 @@ const FilterTask = () => {
             <Filter size={20} className="mr-2" />
             Filter Tasks
           </h2>
-          <button
-            onClick={resetFilters}
-            className="text-sm px-3 py-1 rounded"
-            style={{ backgroundColor: colors.lightGray, color: colors.text }}
-          >
-            Reset Filters
-          </button>
+          <div>
+            <button
+              onClick={resetFilters}
+              className="text-sm px-3 py-1 rounded"
+              style={{ backgroundColor: colors.lightGray, color: colors.text }}
+            >
+              Reset Filters
+            </button>
+            <button
+              onClick={() => (window.location.href = "/task/createTask")}
+              className="text-sm px-3 py-1 rounded"
+              style={{ backgroundColor: colors.lightGray, color: colors.text }}
+            >
+              Add a Task
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
