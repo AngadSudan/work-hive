@@ -18,7 +18,7 @@ function Organization() {
   ]);
 
   return (
-    <div className="p-8 bg-gray-900 min-h-screen">
+    <div className="p-8 bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-yellow-400 text-4xl font-bold">Organizations</h1>
