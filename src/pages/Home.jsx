@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { FiPlus, FiFilter, FiSearch, FiSettings, FiList, FiGrid, FiRefreshCw, FiShare2, FiAlertCircle } from 'react-icons/fi';
+import logosrc from "../assets/logo.png" ;
+
 
 const Home = () => {
   const [view, setView] = useState('board');
-
-  // Sample task data based on the image
   const tasks = {
     backlog: [
       { 
@@ -93,7 +93,6 @@ const Home = () => {
     ]
   };
 
-  // Get task type badge color
   const getTypeColor = (type) => {
     switch(type.toLowerCase()) {
       case 'bug': return 'bg-red-500';
@@ -105,7 +104,6 @@ const Home = () => {
     }
   };
 
-  // Get priority indicator color
   const getPriorityColor = (priority) => {
     switch(priority.toLowerCase()) {
       case 'critical': return 'bg-red-600';
@@ -116,16 +114,15 @@ const Home = () => {
     }
   };
 
-  // Task card component
   const TaskCard = ({ task }) => (
-    <div className="bg-white rounded-md shadow-sm p-3 mb-3 border-l-4 border-blue-500">
+    <div className="bg-[#1e2d42] rounded-md shadow-sm p-3 mb-3 border-l-4 border-blue-500">
       <div className="flex items-start justify-between mb-2">
         <span className={`text-xs px-2 py-1 rounded-full text-white ${getTypeColor(task.type)}`}>
           {task.type}
         </span>
         <span className={`w-3 h-3 rounded-full ${getPriorityColor(task.priority)}`}></span>
       </div>
-      <p className="text-sm font-medium mb-2">{task.title}</p>
+      <p className="text-sm font-medium mb-2 text-white">{task.title}</p>
       <div className="flex justify-between items-center">
         <div className="flex -space-x-2">
           {task.assignees.map((avatar, index) => (
@@ -142,13 +139,12 @@ const Home = () => {
   );
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      {/* Navigation Bar */}
+    <div className="bg-[#0f1827] min-h-screen">
       <nav className="bg-gray-900 text-white p-4">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <div className="text-yellow-400 font-bold text-xl flex items-center">
-              <img src="/api/placeholder/36/36" alt="WorkHive logo" className="mr-2" />
+              <img src={logosrc} alt="WorkHive logo" className="mr-2 w-25 h-25" />
               WorkHive
             </div>
             <div className="hidden md:flex space-x-6">
@@ -167,8 +163,7 @@ const Home = () => {
         </div>
       </nav>
 
-      {/* Feature Boxes */}
-      <div className="container mx-auto py-6 px-4">
+      <div className="container mx-auto py-6 px-4 bg-slate-900 w-[80%] h-[80%]">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <div className="bg-gray-800 text-white p-4 rounded-lg flex items-start">
             <div className="mr-3 bg-yellow-400 p-2 rounded-full">
@@ -201,7 +196,6 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Create Story + Search */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-2">
             <button className="bg-yellow-400 text-gray-900 px-4 py-2 rounded-md text-sm font-medium flex items-center">
@@ -233,11 +227,10 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Workflow Header */}
         <div className="mb-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <div className="flex items-center">
-              <span className="font-semibold mr-2">Workflow: Engineering</span>
+              <span className="font-semibold mr-2 text-white">Workflow: Engineering</span>
               <FiFilter className="text-gray-500" />
             </div>
             <button className="text-sm text-gray-500">Help</button>
@@ -261,9 +254,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Kanban Board */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {/* Backlog Column */}
           <div className="bg-gray-200 rounded-md p-3">
             <div className="flex justify-between items-center mb-3">
               <h3 className="font-medium text-gray-700">Ready for Dev</h3>
@@ -277,5 +268,48 @@ const Home = () => {
             </button>
           </div>
 
-          {/* In Development Column */}
-          <d
+          <div className="bg-gray-200 rounded-md p-3">
+            <div className="flex justify-between items-center mb-3">
+              <h3 className="font-medium text-gray-700">In Development</h3>
+              <span className="text-xs bg-gray-300 py-1 px-2 rounded-full">{tasks.inDevelopment.length}</span>
+            </div>
+            {tasks.inDevelopment.map(task => (
+              <TaskCard key={task.id} task={task} />
+            ))}
+            <button className="w-full text-center py-2 text-gray-500 hover:text-gray-700">
+              <FiPlus className="inline mr-1" /> Add card
+            </button>
+          </div>
+
+          <div className="bg-gray-200 rounded-md p-3">
+            <div className="flex justify-between items-center mb-3">
+              <h3 className="font-medium text-gray-700">Ready for Review</h3>
+              <span className="text-xs bg-gray-300 py-1 px-2 rounded-full">{tasks.readyForReview.length}</span>
+            </div>
+            {tasks.readyForReview.map(task => (
+              <TaskCard key={task.id} task={task} />
+            ))}
+            <button className="w-full text-center py-2 text-gray-500 hover:text-gray-700">
+              <FiPlus className="inline mr-1" /> Add card
+            </button>
+          </div>
+
+          <div className="bg-gray-200 rounded-md p-3">
+            <div className="flex justify-between items-center mb-3">
+              <h3 className="font-medium text-gray-700">Ready to Deploy</h3>
+              <span className="text-xs bg-gray-300 py-1 px-2 rounded-full">{tasks.readyToDeploy.length}</span>
+            </div>
+            {tasks.readyToDeploy.map(task => (
+              <TaskCard key={task.id} task={task} />
+            ))}
+            <button className="w-full text-center py-2 text-gray-500 hover:text-gray-700">
+              <FiPlus className="inline mr-1" /> Add card
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;

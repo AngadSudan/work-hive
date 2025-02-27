@@ -1,12 +1,6 @@
-// import React from "react";
-
-// function CompanyLogin() {
-//   return <div>CompanyLogin</div>;
-// }
-
-// export default CompanyLogin;
-
 import React, { useState } from 'react';
+import logosrc from "../assets/logo.png";
+import beesrc from "../assets/beehive.jpg";
 
 const CompanyLogin = () => {
   const [formData, setFormData] = useState({
@@ -31,10 +25,8 @@ const CompanyLogin = () => {
     setError('');
 
     try {
-      // This would be replaced with your actual API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Simulate login validation
       if (!formData.email.includes('@')) {
         throw new Error('Please enter a valid email address');
       }
@@ -44,7 +36,6 @@ const CompanyLogin = () => {
       }
       
       console.log('Login successful', formData);
-      // Redirect or perform additional actions after successful login
       
     } catch (err) {
       setError(err.message || 'Login failed. Please try again.');
@@ -54,23 +45,27 @@ const CompanyLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800">Company Login</h2>
-          <p className="text-gray-600 mt-2">Sign in to your company account</p>
+    <div className="min-h-screen flex items-center justify-center bg-slate-900 bg-opacity-95 text-white">
+      <div className="w-[70%] h-[70%] mr-[5%]">
+        <img src={beesrc} alt="beehive"/>
+      </div>
+      <div className="max-w-md w-full p-8 mr-[5%]">
+        <div className="flex justify-center mb-8">
+          <div className="w-35 h-35">
+            <img src={logosrc} alt="Logo" />
+          </div>
         </div>
         
         {error && (
-          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md">
+          <div className="mb-4 p-3 bg-red-900 bg-opacity-50 text-red-200 rounded-md">
             {error}
           </div>
         )}
         
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
-              Email Address
+            <label htmlFor="email" className="block text-gray-300 ml-5 font-medium mb-2">
+              Organization Email
             </label>
             <input
               type="email"
@@ -78,14 +73,14 @@ const CompanyLogin = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-4 border border-gray-700 rounded-full bg-white bg-opacity-100 text-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
               placeholder="you@company.com"
               required
             />
           </div>
           
           <div className="mb-6">
-            <label htmlFor="password" className="block text-gray-700 font-medium mb-2">
+            <label htmlFor="password" className="block text-gray-300 ml-5 font-medium mb-2">
               Password
             </label>
             <input
@@ -94,7 +89,7 @@ const CompanyLogin = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-4 border border-gray-700 rounded-full bg-white bg-opacity-100 text-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
               placeholder="••••••••"
               required
             />
@@ -108,13 +103,13 @@ const CompanyLogin = () => {
                 name="rememberMe"
                 checked={formData.rememberMe}
                 onChange={handleChange}
-                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                className="h-4 w-4 text-yellow-500 focus:ring-yellow-500 border-gray-700 rounded"
               />
-              <label htmlFor="rememberMe" className="ml-2 block text-gray-700">
+              <label htmlFor="rememberMe" className="ml-2 block text-gray-300">
                 Remember me
               </label>
             </div>
-            <a href="#" className="text-blue-600 hover:text-blue-800 text-sm">
+            <a href="#" className="text-yellow-500 hover:text-yellow-400 text-sm">
               Forgot password?
             </a>
           </div>
@@ -122,17 +117,17 @@ const CompanyLogin = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-300"
+            className="w-full bg-yellow-500 text-black font-medium py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-slate-900 transition-colors duration-300"
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
         
         <div className="mt-6 text-center">
-          <p className="text-gray-600">
+          <p className="text-gray-400">
             Need an account?{' '}
-            <a href="#" className="text-blue-600 hover:text-blue-800">
-              Contact your administrator
+            <a href="#" className="text-yellow-500 hover:text-yellow-400">
+              Sign up
             </a>
           </p>
         </div>
