@@ -14,9 +14,16 @@ const Landing = () => {
         <div className="logo">
           <img src={logosrc} alt="Company Logo" className="h-25" />
         </div>
-        {/* <nav className="hidden md:block"> */}
+        <nav className="hidden md:block">
+       <a href="/company-login"> <button className="bg-gray-700 hover:bg-yellow-400 hover:text-black text-white py-2 px-4 rounded font-['Arial'] mr-5 transition-all duration-500 hover:cursor-pointer">
+        Login
+      </button></a>
+     <a href="/company-signup"> <button className="bg-gray-700 hover:bg-yellow-400 hover:text-black text-white py-2 px-4 rounded font-['Arial'] mr-5 transition-all duration-500 hover:cursor-pointer">
+        Register as Company
+      </button></a>
+
           {/* Navigation would go here */}
-        {/* </nav> */}
+        </nav>
       </header>
 
       {/* Hero Section */}
@@ -33,12 +40,12 @@ const Landing = () => {
     your company and manage business operations more
     smoothly and effectively.
   </p>
-  <button className="bg-yellow-400 text-black font-bold py-3 px-6 rounded-md flex items-center font-[';']">
+  <a href="/login"><button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-md flex items-center font-[';'] hover:cursor-pointer">
     Get Started
     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
       <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
     </svg>
-  </button>
+  </button></a>
 </div>
         {/* Right side image content */}
         <div className="w-[110%] md:w-1/2 relative mr-10">
@@ -52,13 +59,13 @@ const Landing = () => {
       <section className="border-t border-gray-800 py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center items-center gap-8">
-            <img src={ebay} alt="eBay logo" className=" mr-10 h-13 opacity-70 w-18" />
-            <img src={cisco} alt="Cisco logo" className=" mr-10 h-13 opacity-70 w-18" />
-            <img src={ford} alt="Ford logo" className=" mr-10 h-13 opacity-70 w-18" />
-            <img src={cisco} alt="Square logo" className=" mr-10 h-13 opacity-70 w-18" />
-            <img src={ebay} alt="eBay logo" className=" mr-10 h-13 opacity-70 w-18" />
-            <img src={ford} alt="Cisco logo" className=" mr-10 h-13 opacity-70 w-18" />
-            <img src={cisco} alt="Ford logo" className=" mr-10 h-13 opacity-70 w-18" />
+            <img src={ebay} alt="eBay logo" className=" mr-18 h-13 opacity-70 w-20" />
+            <img src={cisco} alt="Cisco logo" className=" mr-18 h-13 opacity-70 w-20" />
+            <img src={ford} alt="Ford logo" className=" mr-18 h-13 opacity-70 w-20" />
+            <img src={cisco} alt="Square logo" className=" mr-18 h-13 opacity-70 w-20" />
+            <img src={ebay} alt="eBay logo" className=" mr-18 h-13 opacity-70 w-20" />
+            <img src={ford} alt="Cisco logo" className=" mr-18 h-13 opacity-70 w-20" />
+            <img src={cisco} alt="Ford logo" className=" mr-18 h-13 opacity-70 w-20" />
           </div>
         </div>
       </section>
@@ -83,7 +90,7 @@ const Landing = () => {
         <li className="mb-2">• Basic analytics</li>
         <li className="mb-2">• 24/7 support</li>
       </ul>
-      <button className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded font-['Inter']">
+       <button className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded font-['Inter']">
         Get Started
       </button>
     </div>

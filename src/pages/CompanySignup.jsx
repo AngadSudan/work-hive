@@ -177,8 +177,8 @@ function CompanySignup() {
         
         <div className="mt-6 text-center">
           <p className="text-gray-400">
-            Resisted Already?{' '}
-            <a href="#" className="text-yellow-500 hover:text-yellow-400">
+            Registered Already?{' '}
+            <a href="/company-login" className="text-yellow-500 hover:text-yellow-400">
               Log in
             </a>
           </p>

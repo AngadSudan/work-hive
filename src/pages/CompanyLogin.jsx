@@ -126,7 +126,7 @@ const CompanyLogin = () => {
         <div className="mt-6 text-center">
           <p className="text-gray-400">
             Need an account?{' '}
-            <a href="#" className="text-yellow-500 hover:text-yellow-400">
+            <a href="#" className="text-yellow-500 hover:cursor:pointer hover:text-yellow-400">
               Sign up
             </a>
           </p>
