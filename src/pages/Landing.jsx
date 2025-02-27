@@ -52,13 +52,13 @@ const Landing = () => {
       <section className="border-t border-gray-800 py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center items-center gap-8">
-            <img src={ebay} alt="eBay logo" className=" mr-10 h-13 opacity-70 w-18" />
-            <img src={cisco} alt="Cisco logo" className=" mr-10 h-13 opacity-70 w-18" />
-            <img src={ford} alt="Ford logo" className=" mr-10 h-13 opacity-70 w-18" />
-            <img src={cisco} alt="Square logo" className=" mr-10 h-13 opacity-70 w-18" />
-            <img src={ebay} alt="eBay logo" className=" mr-10 h-13 opacity-70 w-18" />
-            <img src={ford} alt="Cisco logo" className=" mr-10 h-13 opacity-70 w-18" />
-            <img src={cisco} alt="Ford logo" className=" mr-10 h-13 opacity-70 w-18" />
+            <img src={ebay} alt="eBay logo" className=" mr-18 h-13 opacity-70 w-20" />
+            <img src={cisco} alt="Cisco logo" className=" mr-18 h-13 opacity-70 w-20" />
+            <img src={ford} alt="Ford logo" className=" mr-18 h-13 opacity-70 w-20" />
+            <img src={cisco} alt="Square logo" className=" mr-18 h-13 opacity-70 w-20" />
+            <img src={ebay} alt="eBay logo" className=" mr-18 h-13 opacity-70 w-20" />
+            <img src={ford} alt="Cisco logo" className=" mr-18 h-13 opacity-70 w-20" />
+            <img src={cisco} alt="Ford logo" className=" mr-18 h-13 opacity-70 w-20" />
           </div>
         </div>
       </section>
