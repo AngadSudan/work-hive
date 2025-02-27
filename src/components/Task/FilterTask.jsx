@@ -18,6 +18,7 @@ import {
   CreditCard,
 } from "lucide-react";
 import TaskCard from "./TaskCard";
+import { Toaster, toast } from "react-hot-toast";
 const FilterTask = () => {
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
@@ -31,6 +32,11 @@ const FilterTask = () => {
   });
 
   // Theme colors
+
+  useEffect(() => {
+    toast.success("data successfully fetched");
+  }, []);
+
   const colors = {
     primary: "#1E2A3C", // dark blue-gray
     secondary: "#FBCB18", // yellow
@@ -260,6 +266,7 @@ const FilterTask = () => {
   return (
     <div className="container mx-auto p-4">
       {/* Filter Section */}
+      <Toaster />
       <div
         className="mb-6 p-4 rounded-lg shadow-md"
         style={{ backgroundColor: colors.light }}
