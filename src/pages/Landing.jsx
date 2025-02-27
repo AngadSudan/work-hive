@@ -15,12 +15,12 @@ const Landing = () => {
           <img src={logosrc} alt="Company Logo" className="h-25" />
         </div>
         <nav className="hidden md:block">
-        <button className="bg-gray-700 hover:bg-yellow-400 hover:text-black text-white py-2 px-4 rounded font-['Arial'] mr-5 transition-all duration-500 hover:cursor-pointer">
+       <a href="/company-login"> <button className="bg-gray-700 hover:bg-yellow-400 hover:text-black text-white py-2 px-4 rounded font-['Arial'] mr-5 transition-all duration-500 hover:cursor-pointer">
         Login
-      </button>
-      <button className="bg-gray-700 hover:bg-yellow-400 hover:text-black text-white py-2 px-4 rounded font-['Arial'] mr-5 transition-all duration-500 hover:cursor-pointer">
+      </button></a>
+     <a href="/company-signup"> <button className="bg-gray-700 hover:bg-yellow-400 hover:text-black text-white py-2 px-4 rounded font-['Arial'] mr-5 transition-all duration-500 hover:cursor-pointer">
         Register as Company
-      </button>
+      </button></a>
 
           {/* Navigation would go here */}
         </nav>
