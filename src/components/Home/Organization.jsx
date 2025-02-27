@@ -5,9 +5,9 @@ function Organization() {
   // Enhanced dummy data to match the schema
   const [organizations, setOrganizations] = useState([
     {
-      name: "tech innovators inc.",
+      name: "Work Hive",
       description:
-        "a leading technology company specializing in ai and machine learning solutions.",
+        "a leading technology company specializing in streamlining the product management cycle.",
       organizationRegestrationNumber: "REG123456",
       status: "active",
       numberOfEmployees: 250,
@@ -128,15 +128,6 @@ function OrganizationCard({ org }) {
           </div>
         </div>
       </div>
-
-      {/* <div className="border-t border-gray-700 p-4 flex justify-end">
-        <button className="text-blue-400 hover:text-blue-300 text-sm font-medium mr-4">
-          Edit
-        </button>
-        <button className="text-red-400 hover:text-red-300 text-sm font-medium">
-          Delete
-        </button>
-      </div> */}
     </div>
   );
 }

@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TaskCard from "../Task/TaskCard.jsx";
+import { useScroll } from "framer-motion";
+import { toast, Toaster } from "react-hot-toast";
+
+import axios from "axios";
 function HeroSection() {
+  const [tasks, setTask] = useState([]);
+
+  useEffect(() => {
+    const getTask = async () => {
+      try {
+        const response = axios.get("http://localhost:8000/task/getOneTask", {
+          user: localStorage.getItem("token"),
+        });
+        console.log(response);
+
+        toast.success("data fetched");
+      } catch (error) {
+        console.log(error);
+        toast.error(error.message);
+      }
+    };
+
+    getTask();
+  }, []);
   return (
     <div className="w-full min-h-[60vh] flex items-center justify-center bg-gradient-to-r from-[#0F1827] to-[#1E2A3C] py-12">
+      <Toaster />
       <div className="w-[90%] md:w-[80%] mx-auto text-center">
         <div className="bg-[#0F1827] p-8 rounded-lg shadow-2xl border border-[#FBCB18]/10 relative overflow-hidden">
           {/* Graffiti-style Welcome Message */}
@@ -27,26 +51,15 @@ function HeroSection() {
             </h2>
 
             <div>
-              {[
-                {
-                  _id: "123",
-                  name: "Implement User Authentication",
-                  description:
-                    "Add login, registration and password reset functionality to the application.",
-                  project: { _id: "p1", name: "Client Portal" },
-                  allotedTeam: { _id: "t1", name: "Frontend Team" },
-                  allotedTo: { _id: "u1", name: "Jane Doe" },
-                  deadline: new Date("2025-03-15"),
-                  status: "in-progress",
-                  priority: "high",
-                  credits: 150,
-                  negativeRewards: -100,
-                  createdAt: new Date("2025-02-20"),
-                  updatedAt: new Date("2025-02-25"),
-                },
-              ].map((task, id) => {
-                return <TaskCard task={task} />;
-              })}
+              {tasks.length !== 0 &&
+                tasks.map((task, id) => {
+                  return <TaskCard task={task} />;
+                })}
+              {tasks.length === 0 && (
+                <>
+                  <h1 className="text-white">No Task for Today 🎊</h1>
+                </>
+              )}
             </div>
           </div>
 

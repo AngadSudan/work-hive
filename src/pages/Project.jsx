@@ -4,6 +4,9 @@ import AllProjects from "../components/Project/AllProjects";
 import ProjectHero from "../components/Project/ProjectHero";
 
 function Project() {
+  if (localStorage.getItem("token") === null) {
+    window.location.href = "/company-login";
+  }
   return (
     <div className="flex min-h-screen bg-gray-100">
       <Sidebar />

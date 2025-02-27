@@ -5,6 +5,9 @@ import RecentReviews from "../components/Home/RecentReviews";
 import Sidebar from "../components/Sidebar";
 
 function Home() {
+  if (localStorage.getItem("token") === null) {
+    window.location.href = "/company-login";
+  }
   return (
     <div className="flex min-h-screen bg-gray-100">
       <Sidebar />

@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
-import logosrc from "../assets/logo.png" ;
-import beesrc from "../assets/beehive.jpg" ;
+import React, { useState } from "react";
+import logosrc from "../assets/logo.png";
+import beesrc from "../assets/beehive.jpg";
+
+import axios from "axios";
+
 function CompanySignup() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
@@ -22,53 +25,58 @@ function CompanySignup() {
 
   const validateForm = () => {
     if (!formData.name.trim()) {
-      setError('Name is required');
+      setError("Name is required");
       return false;
     }
-    
-    if (!formData.email.includes('@')) {
-      setError('Please enter a valid email address');
+
+    if (!formData.email.includes("@")) {
+      setError("Please enter a valid email address");
       return false;
     }
-    
+
     if (formData.password.trim().length < 6) {
-      setError('Password must be at least 6 characters');
+      setError("Password must be at least 6 characters");
       return false;
     }
-    
+
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       return false;
     }
-    
+
     return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    
+    setError("");
+
     if (!validateForm()) {
       return;
     }
-    
+
     setLoading(true);
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      console.log('Registration successful', formData);
+      // await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await axios.post(
+        "http://localhost:8000/organization/create",
+        formData
+      );
+      console.log(response);
+
+      console.log("Registration successful", formData);
       setSuccess(true);
-      
+
+      window.location.href = "/company-login";
       setFormData({
-        name: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
       });
-      
     } catch (err) {
-      setError(err.message || 'Registration failed. Please try again.');
+      setError(err.message || "Registration failed. Please try again.");
       setSuccess(false);
     } finally {
       setLoading(false);
@@ -78,32 +86,34 @@ function CompanySignup() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0f1827] bg-opacity-95 text-white">
       <div className="w-[70%] h-[70%] mr-[5%]">
-        <img src={beesrc} alt="beehive"/></div>
+        <img src={beesrc} alt="beehive" />
+      </div>
       <div className="max-w-md w-full p-8 mr-[5%]">
         <div className="flex justify-center mb-8">
-
           <div className="w-35 h-35">
             {/* img */}
             <img src={logosrc} alt="Logo" />
-
           </div>
         </div>
-        
+
         {error && (
           <div className="mb-4 p-3 bg-red-900 bg-opacity-50 text-red-200 rounded-md">
             {error}
           </div>
         )}
-        
+
         {success && (
           <div className="mb-4 p-3 bg-green-900 bg-opacity-50 text-green-200 rounded-md">
             Registration successful! You can now log in to your account.
           </div>
         )}
-        
+
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-300 ml-5 font-medium mb-2">
+            <label
+              htmlFor="name"
+              className="block text-gray-300 ml-5 font-medium mb-2"
+            >
               Name
             </label>
             <input
@@ -117,9 +127,12 @@ function CompanySignup() {
               required
             />
           </div>
-          
+
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-300 ml-5 font-medium mb-2">
+            <label
+              htmlFor="email"
+              className="block text-gray-300 ml-5 font-medium mb-2"
+            >
               Organization mail
             </label>
             <input
@@ -133,9 +146,12 @@ function CompanySignup() {
               required
             />
           </div>
-          
+
           <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-300 ml-5 font-medium mb-2">
+            <label
+              htmlFor="password"
+              className="block text-gray-300 ml-5 font-medium mb-2"
+            >
               Password
             </label>
             <input
@@ -149,9 +165,12 @@ function CompanySignup() {
               required
             />
           </div>
-          
+
           <div className="mb-6">
-            <label htmlFor="confirmPassword" className="block text-gray-300 ml-5 font-medium mb-2">
+            <label
+              htmlFor="confirmPassword"
+              className="block text-gray-300 ml-5 font-medium mb-2"
+            >
               Confirm Password
             </label>
             <input
@@ -165,25 +184,27 @@ function CompanySignup() {
               required
             />
           </div>
-          
+
           <button
             type="submit"
             disabled={loading}
             className="w-full bg-yellow-500 text-black font-medium py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-slate-900 transition-colors duration-300"
           >
-            {loading ? 'Processing...' : 'Enter'}
+            {loading ? "Processing..." : "Enter"}
           </button>
         </form>
-        
+
         <div className="mt-6 text-center">
           <p className="text-gray-400">
-            Registered Already?{' '}
-            <a href="/company-login" className="text-yellow-500 hover:text-yellow-400">
+            Registered Already?{" "}
+            <a
+              href="/company-login"
+              className="text-yellow-500 hover:text-yellow-400"
+            >
               Log in
             </a>
           </p>
         </div>
-        
       </div>
     </div>
   );

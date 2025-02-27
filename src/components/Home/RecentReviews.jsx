@@ -105,20 +105,6 @@ function RecentReviews() {
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-yellow-400 text-4xl font-bold">Recent Reviews</h1>
-          <div className="flex space-x-4">
-            <select className="bg-gray-800 text-gray-200 py-2 px-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400">
-              <option>All Reviews</option>
-              <option>Approved</option>
-              <option>Pending</option>
-              <option>Rejected</option>
-            </select>
-            <select className="bg-gray-800 text-gray-200 py-2 px-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400">
-              <option>Latest First</option>
-              <option>Oldest First</option>
-              <option>Highest Rating</option>
-              <option>Lowest Rating</option>
-            </select>
-          </div>
         </div>
 
         <div className="space-y-6">
@@ -135,7 +121,7 @@ function RecentReviews() {
     </div>
   );
 }
-
+import logosrc from "../../assets/profile.svg";
 function ReviewCard({ review, formatDate, renderRating }) {
   return (
     <div className="bg-gray-800 rounded-xl shadow-lg overflow-hidden">
@@ -143,7 +129,7 @@ function ReviewCard({ review, formatDate, renderRating }) {
         <div className="flex justify-between items-start">
           <div className="flex items-center">
             <img
-              src={review.reviewer.avatar}
+              src={logosrc}
               alt={review.reviewer.name}
               className="w-10 h-10 rounded-full mr-4"
             />
@@ -208,17 +194,6 @@ function ReviewCard({ review, formatDate, renderRating }) {
           </div>
         </div>
       </div>
-
-      {review.status === "pending" && (
-        <div className="bg-gray-700 px-6 py-3 flex justify-end space-x-3">
-          <button className="px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded text-sm font-medium transition-colors">
-            Approve
-          </button>
-          <button className="px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded text-sm font-medium transition-colors">
-            Reject
-          </button>
-        </div>
-      )}
     </div>
   );
 }

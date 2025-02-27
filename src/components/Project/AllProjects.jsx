@@ -24,8 +24,9 @@ function AllProjects() {
       {/* Project filter section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
         <div className="mb-4 md:mb-0">
-          <h2 className="text-xl font-semibold">All Projects</h2>
-          <p className="text-gray-400 text-sm">Showing {12} active projects</p>
+          <h2 className="text-4xl text-white ml-12 mt-4  font-semibold">
+            All Projects
+          </h2>
         </div>
 
         <div className="flex space-x-2">
