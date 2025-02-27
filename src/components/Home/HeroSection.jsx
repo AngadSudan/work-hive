@@ -1,5 +1,5 @@
 import React from "react";
-
+import TaskCard from "../Task/TaskCard.jsx";
 function HeroSection() {
   return (
     <div className="w-full min-h-[60vh] flex items-center justify-center bg-gradient-to-r from-[#0F1827] to-[#1E2A3C] py-12">
@@ -25,24 +25,36 @@ function HeroSection() {
             <h2 className="text-[#FBCB18] font-semibold text-2xl mb-4">
               Your Pending Tasks 🚀
             </h2>
-            <ul className="text-[#E0E0E0] space-y-3">
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-[#FBCB18] rounded-full mr-3"></span>
-                Complete the quarterly report
-              </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-[#FBCB18] rounded-full mr-3"></span>
-                Review team performance metrics
-              </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-[#FBCB18] rounded-full mr-3"></span>
-                Prepare for the client meeting
-              </li>
-            </ul>
+
+            <div>
+              {[
+                {
+                  _id: "123",
+                  name: "Implement User Authentication",
+                  description:
+                    "Add login, registration and password reset functionality to the application.",
+                  project: { _id: "p1", name: "Client Portal" },
+                  allotedTeam: { _id: "t1", name: "Frontend Team" },
+                  allotedTo: { _id: "u1", name: "Jane Doe" },
+                  deadline: new Date("2025-03-15"),
+                  status: "in-progress",
+                  priority: "high",
+                  credits: 150,
+                  negativeRewards: -100,
+                  createdAt: new Date("2025-02-20"),
+                  updatedAt: new Date("2025-02-25"),
+                },
+              ].map((task, id) => {
+                return <TaskCard task={task} />;
+              })}
+            </div>
           </div>
 
           {/* Call-to-Action Button */}
-          <button className="mt-8 bg-[#FBCB18] text-[#0F1827] font-semibold py-3 px-8 rounded-lg hover:bg-[#E0B317] transition duration-300 relative z-10">
+          <button
+            onClick={() => (window.location.href = "/task")}
+            className="mt-8 cursor-pointer bg-[#FBCB18] text-[#0F1827] font-semibold py-3 px-8 rounded-lg hover:bg-[#E0B317] transition duration-300 relative z-10"
+          >
             View All Tasks
           </button>
         </div>
