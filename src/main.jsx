@@ -22,18 +22,16 @@ import Test from "./pages/Test.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/home" element={<App />}>
-        <Route index path="" element={<Home />} />
-        <Route index path="organization" element={<Organization />} />
-        <Route index path="projects" element={<Project />} />
-        <Route index path="projects/1" element={<IndividualProjecs />} />
-        <Route index path="task" element={<Task />} />
-      </Route>
+      <Route index path="/home" element={<Home />} />
+      <Route index path="/organization" element={<Organization />} />
+      <Route index path="/projects" element={<Project />} />
+      <Route index path="/projects/:project" element={<IndividualProjecs />} />
+      <Route index path="/task" element={<Task />} />
       <Route index path="" element={<Landing />} />
       <Route index path="/login" element={<Login />} />
       <Route index path="/company-login" element={<CompanyLogin />} />
       <Route index path="/company-signup" element={<CompanySignup />} />
-      <Route index path="/test" element={<Test />} />
+      <Route index path="/profile" element={<Test />} />
     </>
   )
 );
