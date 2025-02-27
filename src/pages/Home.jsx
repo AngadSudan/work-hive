@@ -255,9 +255,9 @@ const Home = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="bg-gray-200 rounded-md p-3">
+          <div className="bg-[#1e2939] rounded-md p-3">
             <div className="flex justify-between items-center mb-3">
-              <h3 className="font-medium text-gray-700">Ready for Dev</h3>
+              <h3 className="font-medium text-[#8dacde]">Ready for Dev</h3>
               <span className="text-xs bg-gray-300 py-1 px-2 rounded-full">{tasks.backlog.length}</span>
             </div>
             {tasks.backlog.map(task => (
@@ -268,9 +268,9 @@ const Home = () => {
             </button>
           </div>
 
-          <div className="bg-gray-200 rounded-md p-3">
+          <div className="bg-[#1e2939] rounded-md p-3">
             <div className="flex justify-between items-center mb-3">
-              <h3 className="font-medium text-gray-700">In Development</h3>
+              <h3 className="font-medium text-[#8dacde]">In Development</h3>
               <span className="text-xs bg-gray-300 py-1 px-2 rounded-full">{tasks.inDevelopment.length}</span>
             </div>
             {tasks.inDevelopment.map(task => (
@@ -281,9 +281,9 @@ const Home = () => {
             </button>
           </div>
 
-          <div className="bg-gray-200 rounded-md p-3">
+          <div className="bg-[#1e2939] rounded-md p-3">
             <div className="flex justify-between items-center mb-3">
-              <h3 className="font-medium text-gray-700">Ready for Review</h3>
+              <h3 className="font-medium text-[#8dacde]">Ready for Review</h3>
               <span className="text-xs bg-gray-300 py-1 px-2 rounded-full">{tasks.readyForReview.length}</span>
             </div>
             {tasks.readyForReview.map(task => (
@@ -294,9 +294,9 @@ const Home = () => {
             </button>
           </div>
 
-          <div className="bg-gray-200 rounded-md p-3">
+          <div className="bg-[#1e2939] rounded-md p-3">
             <div className="flex justify-between items-center mb-3">
-              <h3 className="font-medium text-gray-700">Ready to Deploy</h3>
+              <h3 className="font-medium text-[#8dacde]">Ready to Deploy</h3>
               <span className="text-xs bg-gray-300 py-1 px-2 rounded-full">{tasks.readyToDeploy.length}</span>
             </div>
             {tasks.readyToDeploy.map(task => (
