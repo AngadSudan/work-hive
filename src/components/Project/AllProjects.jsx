@@ -17,7 +17,7 @@ const sampleProject = {
   priority: "high",
   prd: "https://docs.example.com/prd/client-portal",
   status: "open",
-  createdBy: { _id: "u789", name: "Jordan Smith" },
+  createdBy: { _id: "67c098a30b023de5d7280177", name: "Angad Sudan" },
   createdAt: new Date("2025-01-10"),
   updatedAt: new Date("2025-02-05"),
 };

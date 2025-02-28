@@ -19,6 +19,7 @@ import Task from "./pages/Task.jsx";
 import Test from "./pages/Test.jsx";
 import CreateTask from "./components/Task/CreatetTask.jsx";
 import OrganizationPage from "./pages/temp.jsx";
+import CreateProject from "./components/Project/CreateProject.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,7 +33,8 @@ const router = createBrowserRouter(
       <Route index path="/company-login" element={<CompanyLogin />} />
       <Route index path="/company-signup" element={<CompanySignup />} />
       <Route index path="/profile" element={<Test />} />
-      <Route index path="/create-task" element={<CreateTask />} />
+      <Route index path="/create-project" element={<CreateTask />} />
+      <Route index path="/task/createTask" element={<CreateProject />} />
       <Route index path="/temp" element={<OrganizationPage />} />
     </>
   )

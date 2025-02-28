@@ -40,7 +40,9 @@ function ProjectHero() {
                 <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
               </div>
               <button
-                onClick={() => (window.location.href = "/create-task")}
+                onClick={() =>
+                  (window.location.href = "/project/create-project")
+                }
                 className="bg-[#FBCB18] hover:bg-amber-500 text-[#0F1827] font-medium px-4 py-2 rounded-lg flex items-center transition-colors"
               >
                 <PlusCircle className="h-4 w-4 mr-1" />
