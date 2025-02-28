@@ -39,7 +39,7 @@ const FilterTask = () => {
       }
     };
 
-    getTask();
+    // getTask();
   }, []);
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
