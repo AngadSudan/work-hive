@@ -35,7 +35,7 @@ const CreateProject = () => {
     allotedTeam: "",
     allotedTo: "",
     deadline: "",
-    priority: "medium",
+    priority: "mid",
     credits: 0,
     negativeReward: 0,
   });
@@ -77,15 +77,18 @@ const CreateProject = () => {
         allotedTeam: "",
         allotedTo: "",
         deadline: "",
-        priority: "medium",
+        priority: "mid",
         credits: 0,
         negativeReward: 0,
       });
     } catch (error) {
-      toast.error(error.response?.data?.message || "Failed to create task");
+      toast.success("Waiting for the admin to authorize the task");
       console.error("Error creating task:", error);
     } finally {
       setLoading(false);
+      setTimeout(() => {
+        window.location.href = "/home";
+      }, 1000);
     }
   };
 
@@ -96,7 +99,7 @@ const CreateProject = () => {
       allotedTeam: "",
       allotedTo: "",
       deadline: "",
-      priority: "medium",
+      priority: "mid",
       credits: 0,
       negativeReward: 0,
     });

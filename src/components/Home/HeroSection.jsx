@@ -15,6 +15,23 @@ function HeroSection() {
         });
         console.log(response);
 
+        setTask([
+          {
+            _id: "2",
+            name: "Create Dashboard UI",
+            description:
+              "Design and implement responsive dashboard with charts and data visualization",
+            project: { _id: "p1", name: "Website Redesign" },
+            allotedTeam: { _id: "t2", name: "Frontend Team" },
+            allotedTo: { _id: "u2", firstName: "Jane", lastName: "Smith" },
+            deadline: new Date("2025-03-10"),
+            status: "pending",
+            priority: "mid",
+            credits: 180,
+            negativeRewards: -100,
+          },
+        ]);
+
         toast.success("data fetched");
       } catch (error) {
         console.log(error);
