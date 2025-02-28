@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { toast, Toaster } from "react-hot-toast";
+
 import {
   Filter,
   Search,
@@ -17,8 +20,26 @@ import {
   Briefcase,
   CreditCard,
 } from "lucide-react";
+
 import TaskCard from "./TaskCard";
 const FilterTask = () => {
+  useEffect(() => {
+    const getTask = async () => {
+      try {
+        const response = axios.get("http://localhost:8000/task/getOneTask", {
+          user: localStorage.getItem("token"),
+        });
+        console.log(response);
+
+        toast.success("data fetched");
+      } catch (error) {
+        console.log(error);
+        toast.error(error.message);
+      }
+    };
+
+    getTask();
+  }, []);
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [loading, setLoading] = useState(true);

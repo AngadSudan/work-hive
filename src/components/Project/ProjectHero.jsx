@@ -11,10 +11,10 @@ import {
 function ProjectHero() {
   // Sample data - would normally come from props or context
   const stats = {
-    activeProjects: 8,
-    completedProjects: 12,
-    upcomingDeadlines: 3,
-    teamMembers: 17,
+    activeProjects: 1,
+    completedProjects: 0,
+    upcomingDeadlines: 0,
+    teamMembers: 4,
   };
 
   return (

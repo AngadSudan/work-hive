@@ -7,7 +7,7 @@ function Organization() {
     {
       name: "Work Hive",
       description:
-        "a leading technology company specializing in streamlining the product management cycle.",
+        "A leading technology company specializing in streamlining the product management cycle.",
       organizationRegestrationNumber: "REG123456",
       status: "active",
       numberOfEmployees: 250,
@@ -15,13 +15,14 @@ function Organization() {
       currentProjects: 15,
       completedProjects: 45,
     },
+    
   ]);
 
   return (
     <div className="p-8 bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-yellow-400 text-4xl font-bold">Organizations</h1>
+          <h1 className="text-yellow-400 text-4xl font-bold">Your Organization</h1>
         </div>
 
         <div className="">

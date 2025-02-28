@@ -14,16 +14,25 @@ import {
   X,
 } from "lucide-react";
 
+let firstName="Angad"
+let lastName= "Sudan"
+let email= "angad@workhive.com"
+let role=  "employee"
+let employeeNumber= "EMP004"
+let userName="angad"
+let credits=   100
+
+
 const UserProfile = ({ user }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [userForm, setUserForm] = useState({
-    firstName: user?.firstName || "",
-    lastName: user?.lastName || "",
-    email: user?.email || "",
+    firstName:"Angad",
+    lastName: user?.lastName || "Sudan",
+    email: user?.email || "angad@workhive.com",
     role: user?.role || "employee",
-    employeeNumber: user?.employeeNumber || "",
-    userName: user?.userName || "",
-    credits: user?.credits || 0,
+    employeeNumber: user?.employeeNumber || "EMP004",
+    userName: user?.userName || "angad",
+    credits: user?.credits || 100,
   });
 
   // Theme colors
@@ -65,6 +74,7 @@ const UserProfile = ({ user }) => {
   };
 
   return (
+    <div className="min-h-screen bg-[#0F1827] text-[#FBCB18] p-5">
     <div
       className="rounded-lg shadow-lg overflow-hidden max-w-2xl mx-auto"
       style={{ backgroundColor: colors.light, borderRadius: "0.75rem" }}
@@ -85,11 +95,11 @@ const UserProfile = ({ user }) => {
           </div>
           <div className="ml-4 text-white">
             <h2 className="text-xl font-bold">
-              {user?.firstName} {user?.lastName}
+              {firstName} {lastName}
             </h2>
             <div className="flex items-center mt-1">
               <AtSign size={14} />
-              <span className="ml-1 text-sm">{user?.userName}</span>
+              <span className="ml-1 text-sm">{userName}</span>
             </div>
           </div>
         </div>
@@ -159,7 +169,7 @@ const UserProfile = ({ user }) => {
                 <input
                   type="email"
                   name="email"
-                  value={userForm.email}
+                  value={email}
                   onChange={handleChange}
                   className="w-full border rounded-md p-2 focus:ring-2"
                   style={{
@@ -179,7 +189,7 @@ const UserProfile = ({ user }) => {
                 <input
                   type="text"
                   name="userName"
-                  value={userForm.userName}
+                  value={userName}
                   onChange={handleChange}
                   className="w-full border rounded-md p-2 focus:ring-2"
                   style={{
@@ -199,7 +209,7 @@ const UserProfile = ({ user }) => {
                 <input
                   type="text"
                   name="employeeNumber"
-                  value={userForm.employeeNumber}
+                  value={employeeNumber}
                   onChange={handleChange}
                   className="w-full border rounded-md p-2 focus:ring-2"
                   style={{
@@ -314,7 +324,7 @@ const UserProfile = ({ user }) => {
                   <Hash size={16} />
                   <span className="ml-2 text-sm font-medium">Employee ID</span>
                 </div>
-                <p style={{ color: colors.text }}>{user?.employeeNumber}</p>
+                <p style={{ color: colors.text }}>{employeeNumber}</p>
               </div>
 
               <div
@@ -332,7 +342,7 @@ const UserProfile = ({ user }) => {
                   <span className="ml-2 text-sm font-medium">Organization</span>
                 </div>
                 <p style={{ color: colors.text }}>
-                  {user?.organization ? "Connected" : "Not Connected"}
+                  {user?.organization ? "Connected" : "Workhive"}
                 </p>
               </div>
 
@@ -351,7 +361,7 @@ const UserProfile = ({ user }) => {
                   <span className="ml-2 text-sm font-medium">Credits</span>
                 </div>
                 <p style={{ color: colors.text, fontWeight: "bold" }}>
-                  {user?.credits || 0}
+                  {credits}
                 </p>
               </div>
 
@@ -372,7 +382,7 @@ const UserProfile = ({ user }) => {
                   </span>
                 </div>
                 <p style={{ color: colors.text }}>
-                  {user?.starredTask?.length || 0}
+                  {user?.starredTask?.length || 1}
                 </p>
               </div>
             </div>
@@ -392,19 +402,20 @@ const UserProfile = ({ user }) => {
                 <div style={{ color: colors.text }}>
                   {user?.createdAt
                     ? new Date(user.createdAt).toLocaleDateString()
-                    : "N/A"}
+                    : "27-02-2025"}
                 </div>
                 <div style={{ color: colors.textLight }}>Last Updated</div>
                 <div style={{ color: colors.text }}>
                   {user?.updatedAt
                     ? new Date(user.updatedAt).toLocaleDateString()
-                    : "N/A"}
+                    : "28-02-2025"}
                 </div>
               </div>
             </div>
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 };
