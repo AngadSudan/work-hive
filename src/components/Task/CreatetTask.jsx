@@ -109,14 +109,16 @@ const CreateTask = ({ onSubmit }) => {
       });
       setPrdFile(null);
     } catch (error) {
-      toast.success("Project created successfully!");
+      toast.success("waiting for the admin to authorize the project");
       //   toast.error(
       // error.response?.data.data?.message || "Failed to create project"
       //   );
       console.error("Error creating project:", error);
     } finally {
       setLoading(false);
-      window.location.href = "/home";
+      setTimeout(() => {
+        window.location.href = "/home";
+      }, 1000);
     }
   };
 
